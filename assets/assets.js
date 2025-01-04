@@ -68,32 +68,36 @@ export const assets = {
 
 export const workData = [
     {
-        title: 'Frontend project',
-        description: 'Web Design',
+        title: 'Nunta Ada & Bogdan',
+        description: 'Fotografie de nuntă',
         bgImage: '/work-1.png',
+        link: 'https://www.facebook.com/photo/?fbid=1081786863947040&set=a.132510062208063',
     },
     {
-        title: 'Geo based app',
-        description: 'Mobile App',
+        title: 'Reina Events North',
+        description: 'Distracție de neuitat! 🎉🎶',
         bgImage: '/work-2.png',
+        link: 'https://www.facebook.com/StereoBoulevard/posts/pfbid02MP9BEQCNeMf8s62gDc3JJHAqjvAh5m9aPQpcuSPSf23WArpeTCgFNFKB4k1Lt5Pal',
     },
     {
-        title: 'Photography site',
-        description: 'Web Design',
+        title: '#StarrParty',
+        description: 'Sunet, lumini și vibe-uri de neuitat! 🎶✨',
         bgImage: '/work-3.png',
+        link: 'https://www.facebook.com/carabageac.laurentiu/posts/pfbid0zouqGpKhSWdmECcKebNtSp9Y7q49PRPqTUuQnVsGA2fuGcLReuHTw3m94zdaq1zXl',
     },
     {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
+        title: 'Show-ul Perfect! 🎤✨',
+        description: 'Atmosferă vibrantă și momente de neuitat!',
         bgImage: '/work-4.png',
+        link: 'https://www.facebook.com/reel/1382458179299289',
     },
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
-    { icon: assets.mobile_icon, title: 'Mobile app', description: 'Mobile app development involves creating software for mobile devices...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
+    { icon: assets.web_icon, title: 'Mix personalizat', description: 'Selecție muzicală unică, adaptată temei evenimentului și gusturilor participanților.', link: 'https://fb.watch/wVh2vLLaIT/' },
+    { icon: assets.mobile_icon, title: 'Lumini și efecte vizuale', description: 'Iluminat special și efecte vizuale (laser, lumini sincronizate cu muzica etc.) pentru a adăuga un plus de energie.', link: 'https://www.facebook.com/reel/898856861597481' },
+    { icon: assets.ui_icon, title: 'Animație și moderare', description: 'Animație și moderare pentru evenimente, creând interacțiune și menținând atmosfera vibrantă.', link: 'https://www.facebook.com/reel/461914833385107' },
+    { icon: assets.graphics_icon, title: 'Sisteme de sunet', description: 'Calitate excelentă a audio-ului, adaptată cerințelor evenimentului, pentru a garanta o experiență sonoră clară și puternică pe întreaga durată a acestuia.', link: 'https://www.facebook.com/reel/1382458179299289' },
 ]
 
 export const infoList = [
