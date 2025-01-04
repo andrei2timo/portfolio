@@ -13,7 +13,7 @@ const About = () => {
         <div className='flex w-full flex-col lg:flex-row items-center
         gap-20 my-20'>
           <div className='w-64 sm:w-80 rounded-3xl max-w-none'>
-            <Image src={assets.user_image} alt='user'className='w-full 
+            <Image src={assets.user_image} alt='user' className='w-full 
             rounded-3xl'/>
           </div>
           <div className='flex-1'>
@@ -42,11 +42,6 @@ const About = () => {
               ))}
             </ul>
 
-            <h4>Tools I use</h4>
-
-            <ul>
-              
-            </ul>
           </div>
         </div>
     </div>
