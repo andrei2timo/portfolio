@@ -3,7 +3,7 @@ import axios from 'axios';
 import Image from 'next/image';
 import { assets } from '@/assets/assets'; // Make sure to import your assets properly
 
-const Work = () => {
+const Work = (isDarkMode) => {
   // State to control the number of visible projects
   const [visibleProjects, setVisibleProjects] = useState(3); // Show first 3 projects by default
   const [projects, setProjects] = useState([]); // State for storing the fetched projects
@@ -41,7 +41,7 @@ const Work = () => {
         Vezi momentele de neuitat capturate la cele mai recente evenimente.
       </p>
 
-      <div className='grid grid-cols-auto my-10 gap-5'>
+      <div className='grid grid-cols-auto my-10 gap-5 dark:text-black'>
         {projects.length > 0 ? (
           projects.slice(0, visibleProjects).map((project, index) => (
             <div
@@ -74,9 +74,9 @@ const Work = () => {
         <a
           href="#"
           onClick={handleShowMore}
-          className='w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500'>
+          className='w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover'>
           Arată mai multe
-          <Image src={assets.right_arrow_bold} alt='Right arrow' className='w-4'/>
+          <Image src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold} alt='Right arrow' className='w-4'/>
         </a>
       )}
     </div>
