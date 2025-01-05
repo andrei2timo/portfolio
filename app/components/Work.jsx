@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import { assets } from '@/assets/assets'; // Make sure to import your assets properly
+import { motion } from "motion/react"
 
 const Work = (isDarkMode) => {
   // State to control the number of visible projects
@@ -29,22 +30,46 @@ const Work = (isDarkMode) => {
   };
 
   return (
-    <div id='work' className='w-full px-[12%] py-10 scroll-mt-20'>
-      <h4 className='text-center mb-2 text-lg font-Ovo'>
+    <motion.div
+    initial={{opacity: 0}}
+    whileInView={{opacity: 1}}
+    transition={{duration: 1}}
+    id='work' className='w-full px-[12%] py-10 scroll-mt-20'>
+      
+      <motion.h4 
+      initial={{y: -20, opacity: 0}}
+      whileInView={{y: 0, opacity: 1}}
+      transition={{delay: 0.3, duration: 0.5}}
+      className='text-center mb-2 text-lg font-Ovo'>
         Galerie de la evenimente
-      </h4>
-      <h2 className='text-center text-5xl font-Ovo'>
+      </motion.h4>
+
+      <motion.h2 
+      initial={{y: -20, opacity: 0}}
+      whileInView={{y: 0, opacity: 1}}
+      transition={{delay: 0.3, duration: 0.5}}
+      className='text-center text-5xl font-Ovo'>
         Momente de la ultimele mele evenimente
-      </h2>
+      </motion.h2>
 
-      <p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
+      <motion.p 
+      initial={{opacity: 0}}
+      whileInView={{opacity: 1}}
+      transition={{delay: 0.7, duration: 0.5}}
+      className='text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo'>
         Vezi momentele de neuitat capturate la cele mai recente evenimente.
-      </p>
+      </motion.p>
 
-      <div className='grid grid-cols-auto my-10 gap-5 dark:text-black'>
+      <motion.div 
+      initial={{opacity: 0}}
+      whileInView={{opacity: 1}}
+      transition={{delay: 0.9, duration: 0.6}}
+      className='grid grid-cols-auto my-10 gap-5 dark:text-black'>
         {projects.length > 0 ? (
           projects.slice(0, visibleProjects).map((project, index) => (
-            <div
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
               key={index}
               className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group'
               style={{ backgroundImage: `url(${project.bgImage})` }}
@@ -63,23 +88,26 @@ const Work = (isDarkMode) => {
                   <Image src={assets.send_icon} alt='send icon' className='w-5' />
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))
         ) : (
           <p>Nu s-au gasit evenimente momentan.</p> // Display message if no data is available
         )}
-      </div>
+      </motion.div>
 
       {visibleProjects < projects.length && (
-        <a
+        <motion.a
+          initial={{opacity: 0}}
+          whileInView={{opacity: 1}}
+          transition={{delay: 1.1, duration: 0.5}}
           href="#"
           onClick={handleShowMore}
           className='w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover'>
           Arată mai multe
           <Image src={isDarkMode ? assets.right_arrow_bold_dark : assets.right_arrow_bold} alt='Right arrow' className='w-4'/>
-        </a>
+        </motion.a>
       )}
-    </div>
+    </motion.div>
   );
 };
 
