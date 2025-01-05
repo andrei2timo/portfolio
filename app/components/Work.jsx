@@ -66,7 +66,7 @@ const Work = () => {
             </div>
           ))
         ) : (
-          <p>No data available</p> // Display message if no data is available
+          <p>Nu s-au gasit evenimente momentan.</p> // Display message if no data is available
         )}
       </div>
 

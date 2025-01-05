@@ -21,7 +21,7 @@ const DataFetcher = () => {
     <div>
       <h1>Data from MongoDB</h1>
       {data.length === 0 ? (
-        <p>No data available</p>
+        <p>Nu s-au gasit evenimente momentan.</p>
       ) : (
         <ul>
           {data.map((item, index) => (

@@ -1,11 +1,19 @@
+const dotenv = require('dotenv');
+dotenv.config({ path: './.env.local' }); // This should be the very first line
+
 const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const cors = require('cors'); // Import cors
 
+
+
+console.log('MONGODB_URI:', process.env.MONGODB_URI); // Log the value of MONGODB_URI
+
+
 const app = express();
 const port = 5000;
 
-const uri = "mongodb+srv://andreitimo19:MInTPKFi9Og7SChN@dj-portfolio.etqs8.mongodb.net/?retryWrites=true&w=majority&appName=Dj-portfolio";
+const uri = process.env.MONGODB_URI || "mongodb+srv://andreitimo19:MInTPKFi9Og7SChN@dj-portfolio.etqs8.mongodb.net/?retryWrites=true&w=majority&appName=Dj-portfolio";
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
