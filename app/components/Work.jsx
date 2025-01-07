@@ -13,9 +13,9 @@ const Work = (isDarkMode) => {
     // Fetch data when the component mounts
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/some-data`);
-        console.log('Data received from API:', response.data);
-        setProjects(response.data);
+        const response = await axios.get('http://localhost:5000/api/some-data');
+        console.log('Data received from API:', response.data);  // Add this line
+        setProjects(response.data); // Set the data received from the backend
       } catch (error) {
         console.error('Error fetching data:', error);
       }
