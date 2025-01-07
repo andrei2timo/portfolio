@@ -91,7 +91,9 @@ const Work = (isDarkMode) => {
             </motion.div>
           ))
         ) : (
-          <p className="text-black dark:text-white">Nu s-au gasit evenimente momentan.</p> // Display message if no data is available
+          <div className="flex items-center justify-center h-full">
+    <p className="text-black dark:text-white">Nu s-au gasit evenimente momentan.</p>
+  </div> // Display message if no data is available
         )}
       </motion.div>
 
