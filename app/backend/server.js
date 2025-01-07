@@ -25,7 +25,7 @@ const client = new MongoClient(uri, {
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000' // Allow your React app's port
+  origin: 'http://localhost:3000' // Allow your React app's port
 }));
 
 async function connectToDatabase() {
