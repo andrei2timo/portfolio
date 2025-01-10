@@ -25,7 +25,12 @@ const client = new MongoClient(uri, {
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000' // Allow your React app's port
+  origin: [
+    'http://localhost:3000', // For local development
+    'https://portfolio-andrei2timos-projects.vercel.app', // Production
+    'https://portfolio-git-master-andrei2timos-projects.vercel.app',
+    'https://portfolio-gqsf4jqq6-andrei2timos-projects.vercel.app'
+  ]
 }));
 
 async function connectToDatabase() {
