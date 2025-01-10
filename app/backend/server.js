@@ -27,10 +27,6 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:3000', // For local development
-    'https://portfolio-andrei2timos-projects.vercel.app', // Production
-    'https://portfolio-git-master-andrei2timos-projects.vercel.app',
-    'https://portfolio-gqsf4jqq6-andrei2timos-projects.vercel.app',
-    'https://dj-portfolio-backend.onrender.com'
   ]
 }));
 
