@@ -27,6 +27,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:3000', // For local development
+    'https://portfolio-navy-delta-66.vercel.app/' // For deployment
   ]
 }));
 
