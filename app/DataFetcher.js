@@ -1,3 +1,5 @@
+// app/DataFetcher.js
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -7,7 +9,8 @@ const DataFetcher = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/some-data');
+        // Use relative URL for production, as Vercel automatically routes it
+        const response = await axios.get('/api/some-data'); 
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
