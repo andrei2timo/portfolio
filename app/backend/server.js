@@ -27,7 +27,9 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:3000', // For local development
-    'https://portfolio-navy-delta-66.vercel.app/' // For deployment
+    'portfolio-navy-delta-66.vercel.app/', // For deployment
+    'https://portfolio-git-master-andrei2timos-projects.vercel.app/',
+    'https://portfolio-qv2yw7py0-andrei2timos-projects.vercel.app/',
   ]
 }));
 
