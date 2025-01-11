@@ -27,36 +27,54 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:3000', // For local development
-    'portfolio-navy-delta-66.vercel.app/', // For deployment
-    'https://portfolio-git-master-andrei2timos-projects.vercel.app/',
-    'https://portfolio-qv2yw7py0-andrei2timos-projects.vercel.app/',
+    'portfolio-navy-delta-66.vercel.app', // For deployment
+    'https://portfolio-git-master-andrei2timos-projects.vercel.app',
+    'https://portfolio-qv2yw7py0-andrei2timos-projects.vercel.app',
   ]
 }));
 
+let cachedClient = null;
+
 async function connectToDatabase() {
+  if (cachedClient) {
+    console.log("Using cached database connection.");
+    return cachedClient;
+  }
+
   try {
     // Try connecting to MongoDB
+    const client = new MongoClient(uri, {
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+      }
+    });
+
     await client.connect();
     console.log("Connected to MongoDB!");
 
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    // Cache the client for reuse
+    cachedClient = client;
+    return client;
   } catch (error) {
     console.error("Failed to connect to MongoDB:", error);
+    throw error;
   }
 }
+
 
 // Call the function to connect
 connectToDatabase();
 
 // Route to fetch data from the `projects` collection in the `projectDB` database
 app.get('/api/some-data', async (req, res) => {
-  console.log('API endpoint hit'); // Log when the endpoint is accessed
+  console.log('API endpoint hit');
   try {
+    const client = await connectToDatabase(); // Get client from cached connection
     const collection = client.db("projectDB").collection("projects");
     const data = await collection.find({}).toArray();
-    console.log("Fetched data from MongoDB:", data);  // Log data from MongoDB
+    console.log("Fetched data from MongoDB:", data);  
     if (data.length === 0) {
       return res.status(404).json({ message: "No data found" });
     }
@@ -66,6 +84,7 @@ app.get('/api/some-data', async (req, res) => {
     res.status(500).json({ message: "Error retrieving data" });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
