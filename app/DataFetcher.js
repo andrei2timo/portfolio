@@ -1,5 +1,3 @@
-// app/DataFetcher.js
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -9,8 +7,7 @@ const DataFetcher = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Use relative URL for production, as Vercel automatically routes it
-        const response = await axios.get('/api/some-data'); 
+        const response = await axios.get('portfolio-navy-delta-66.vercel.app/api/some-data');// axios.get('http://localhost:5000/api/some-data');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
