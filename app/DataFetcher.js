@@ -7,7 +7,7 @@ const DataFetcher = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('portfolio-navy-delta-66.vercel.app/api/some-data');// axios.get('http://localhost:5000/api/some-data');
+        const response = await axios.get('api/some-data');// axios.get('http://localhost:5000/api/some-data');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
