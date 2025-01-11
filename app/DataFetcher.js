@@ -7,7 +7,9 @@ const DataFetcher = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('api/some-data');// axios.get('http://localhost:5000/api/some-data');
+        // Use dynamic API URL based on environment
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/some-data';
+        const response = await axios.get(apiUrl);
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

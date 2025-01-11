@@ -1,17 +1,12 @@
 const dotenv = require('dotenv');
-dotenv.config({ path: '../../.env.local' }); // This should be the very first line
+dotenv.config(); // Use default .env file
 
 const express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const cors = require('cors'); // Import cors
-
-
-
-console.log('MONGODB_URI:', process.env.MONGODB_URI); // Log the value of MONGODB_URI
-
+const cors = require('cors');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, {
@@ -27,19 +22,17 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:3000', // For local development
-    'portfolio-navy-delta-66.vercel.app/', // For deployment
-    'https://portfolio-git-master-andrei2timos-projects.vercel.app/',
-    'https://portfolio-qv2yw7py0-andrei2timos-projects.vercel.app/',
+    'https://portfolio-navy-delta-66.vercel.app', // Vercel domain 1
+    'https://portfolio-git-master-andrei2timos-projects.vercel.app', // Vercel domain 2
+    'https://portfolio-p87vb4act-andrei2timos-projects.vercel.app', // Vercel domain 3
   ]
 }));
 
 async function connectToDatabase() {
   try {
-    // Try connecting to MongoDB
     await client.connect();
     console.log("Connected to MongoDB!");
 
-    // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } catch (error) {
@@ -47,15 +40,13 @@ async function connectToDatabase() {
   }
 }
 
-// Call the function to connect
 connectToDatabase();
 
-// Route to fetch data from the `projects` collection in the `projectDB` database
 app.get('/api/some-data', async (req, res) => {
   try {
     const collection = client.db("projectDB").collection("projects");
     const data = await collection.find({}).toArray();
-    console.log("Fetched data from MongoDB:", data);  // Log data from MongoDB
+    console.log("Fetched data from MongoDB:", data); 
     if (data.length === 0) {
       return res.status(404).json({ message: "No data found" });
     }
@@ -66,7 +57,7 @@ app.get('/api/some-data', async (req, res) => {
   }
 });
 
-
+// For Vercel to work, you can use the `vercel.json` file
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
