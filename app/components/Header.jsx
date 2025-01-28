@@ -54,7 +54,7 @@ const Header = () => {
                 href="/sample-resume.pdf" download 
                 className='px-10 py-3 border rounded-full border-gray-500 flex
                 items-center gap-2 bg-white dark:text-black'>
-                    My Resume <Image src={assets.download_icon} alt='Resume-image' 
+                    Prices <Image src={assets.download_icon} alt='Resume-image' 
                 className='w-4'/></motion.a>
             </div>
     </div>
